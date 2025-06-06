@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x #DEBUGING MODE
+#set -x #DEBUGING MODE
 dattime=$(date +"%Y-%m-%d_%H-%M")
 
 if [[ $1 == "-r" ]]; then
