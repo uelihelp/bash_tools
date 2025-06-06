@@ -1,0 +1,6 @@
+#!/bin/bash
+#set -x #DEBUGING MODE
+dattime=$(date +"%Y-%m-%d_%H-%M")
+#FILE="/path/to dir 1/foo.txt"
+f=$(basename -- "$1")
+cp "$1" "$2/$f.$dattime" && ls -lsZ "$2"
