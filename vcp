@@ -1,6 +1,18 @@
 #!/bin/bash
-#set -x #DEBUGING MODE
+set -x #DEBUGING MODE
 dattime=$(date +"%Y-%m-%d_%H-%M")
-#FILE="/path/to dir 1/foo.txt"
-f=$(basename -- "$1")
-cp "$1" "$2/$f.$dattime" && ls -lsZ "$2"
+
+if [[ $1 == "-r" ]]; then
+    d=$(basename -- "$2")
+#   mkdir "$3$d.$dattime"
+#   cp -r "$2" "$3$d.$dattime" && ls -lsZ "$3"
+    target="$3/$d.$dattime"
+    mkdir -p "$target"
+    # Nur Inhalt des Verzeichnisses kopieren (nicht das Verzeichnis selbst)
+    cp -r "$2/"* "$2/".* "$target/" 2>/dev/null
+    ls -lsZ "$target"
+else
+    #FILE="/path/to dir 1/foo.txt"
+    f=$(basename -- "$1")
+    cp "$1" "$2/$f.$dattime" && ls -lsZ "$2"
+fi
